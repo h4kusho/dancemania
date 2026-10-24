@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dance Mania — одежда и обувь для танцев в Екатеринбурге</title>
+<meta name="description" content="Одежда для бальных и спортивных танцев, хореографии и художественной гимнастики. Магазин Dance Mania, Екатеринбург, ул. Радищева, 4.">
+<meta name="theme-color" content="#c0365f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { fontFamily: { sans: ['Manrope','system-ui','sans-serif'], serif: ['"Playfair Display"','Georgia','serif'] } } }
+  };
+</script>
+
+<style>
+  :root { --accent:#c0365f; --dark:#1d1720; --paper:#faf6f2; --line:#eadfd6; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--paper); color:var(--dark); font-family:'Manrope',system-ui,sans-serif; }
+  .accent-bg { background:var(--accent); }
+  .accent-text { color:var(--accent); }
+  .btn-primary { background:var(--accent); color:#fff; transition:transform .15s, box-shadow .15s, filter .15s; }
+  .btn-primary:hover { filter:brightness(1.08); transform:translateY(-1px); box-shadow:0 10px 24px -10px var(--accent); }
+  .btn-primary:active { transform:translateY(0); }
+  .btn-ghost { border:1.5px solid var(--dark); transition:background .15s,color .15s; }
+  .btn-ghost:hover { background:var(--dark); color:#fff; }
+  .chip { border:1.5px solid var(--line); background:#fff; transition:all .15s; }
+  .chip:hover { border-color:var(--dark); }
+  .chip.active { background:var(--dark); border-color:var(--dark); color:#fff; }
+  .card { background:#fff; border:1px solid var(--line); transition:transform .2s, box-shadow .2s; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(29,23,32,.45); }
+  .card img { transition:transform .5s; }
+  .card:hover img { transform:scale(1.04); }
+  .field { width:100%; background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:.85rem 1rem; font-size:1rem; outline:none; transition:border-color .15s, box-shadow .15s; }
+  .field:focus { border-color:var(--accent); box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+  .field.invalid { border-color:#d92d20; }
+  .err { color:#d92d20; font-size:.8rem; margin-top:.3rem; min-height:1rem; }
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} .card,.card img{transition:none} }
+  .img-ph { background:linear-gradient(135deg,#f1e7df,#e8d9ce); }
+  dialog::backdrop { background:rgba(29,23,32,.55); backdrop-filter:blur(3px); }
+  dialog { border:0; padding:0; background:transparent; max-width:100vw; max-height:100vh; }
+  :focus-visible { outline:3px solid color-mix(in srgb, var(--accent) 60%, white); outline-offset:2px; }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ═════════ ШАПКА ═════════ -->
+<header id="top" class="sticky top-0 z-40 bg-[var(--paper)]/90 backdrop-blur border-b border-[var(--line)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 lg:h-20 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 shrink-0" aria-label="Dance Mania — на главную">
+      <img id="logo" alt="Dance Mania" class="h-9 lg:h-11 w-auto" referrerpolicy="no-referrer">
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-[15px] font-semibold" aria-label="Основная навигация">
+      <a href="#catalog" class="hover:text-[var(--accent)]">Каталог</a>
+      <a href="#why" class="hover:text-[var(--accent)]">Преимущества</a>
+      <a href="#reviews" class="hover:text-[var(--accent)]">Отзывы</a>
+      <a href="#contacts" class="hover:text-[var(--accent)]">Контакты</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a id="headPhone" class="hidden md:block text-[15px] font-bold whitespace-nowrap hover:text-[var(--accent)]" href="#"></a>
+      <a href="#contacts" class="btn-primary hidden sm:inline-flex rounded-full px-5 py-2.5 text-sm font-bold">Связаться</a>
+      <button id="burger" class="lg:hidden w-11 h-11 grid place-items-center rounded-full border border-[var(--line)] bg-white" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileNav" class="hidden lg:hidden border-t border-[var(--line)] bg-[var(--paper)] px-4 pb-4" aria-label="Мобильная навигация">
+    <a href="#catalog" class="block py-3.5 text-lg font-semibold border-b border-[var(--line)]">Каталог</a>
+    <a href="#why" class="block py-3.5 text-lg font-semibold border-b border-[var(--line)]">Преимущества</a>
+    <a href="#reviews" class="block py-3.5 text-lg font-semibold border-b border-[var(--line)]">Отзывы</a>
+    <a href="#contacts" class="block py-3.5 text-lg font-semibold">Контакты</a>
+    <a id="mobPhone" class="btn-primary mt-2 flex justify-center rounded-full py-3.5 font-bold" href="#"></a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ═════════ HERO ═════════ -->
+<section class="relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-14 lg:pt-16 lg:pb-24 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+    <div class="lg:col-span-6 reveal">
+      <p id="heroEyebrow" class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[.18em] accent-text"></p>
+      <h1 id="heroTitle" class="font-serif text-[2.4rem] leading-[1.08] sm:text-6xl lg:text-[4.1rem] font-semibold mt-4"></h1>
+      <p id="heroText" class="mt-6 text-lg leading-relaxed text-[#5b4f57] max-w-xl"></p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a id="heroCta" href="#catalog" class="btn-primary inline-flex justify-center items-center rounded-full px-8 py-4 text-base font-bold"></a>
+        <a id="heroCta2" href="#contacts" class="btn-ghost inline-flex justify-center items-center rounded-full px-8 py-4 text-base font-bold"></a>
+      </div>
+      <dl id="heroStats" class="mt-10 grid grid-cols-3 gap-4 max-w-lg"></dl>
+    </div>
+    <div class="lg:col-span-6 reveal">
+      <div class="relative">
+        <div class="absolute -inset-3 sm:-inset-5 rounded-[2.5rem] bg-[var(--accent)]/10 rotate-2"></div>
+        <div class="relative aspect-[4/3] lg:aspect-[5/4] rounded-[2rem] overflow-hidden img-ph shadow-2xl shadow-black/10">
+          <img id="heroImg" alt="Одежда для танцев Dance Mania" class="w-full h-full object-cover" referrerpolicy="no-referrer" fetchpriority="high">
+        </div>
+        <div class="hidden sm:flex absolute -bottom-5 -left-5 items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-xl border border-[var(--line)]">
+          <span class="w-11 h-11 rounded-full accent-bg grid place-items-center text-white">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          </span>
+          <div class="text-sm leading-tight"><b class="block">Магазин в центре</b><span id="heroAddr" class="text-[#6b5f66]"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ КАТАЛОГ ═════════ -->
+<section id="catalog" class="py-16 lg:py-24 bg-white border-y border-[var(--line)] scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[.18em] accent-text">Каталог</p>
+        <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-2">Выберите своё</h2>
+      </div>
+      <div class="relative w-full lg:w-80">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-[#9b8f96]" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="Поиск по названию" class="field pl-11" aria-label="Поиск по каталогу">
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div id="chips" class="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap" role="tablist" aria-label="Категории"></div>
+      <label class="flex items-center gap-2 text-sm font-semibold shrink-0">
+        Сортировка
+        <select id="sort" class="field !w-auto !py-2.5 !rounded-full text-sm">
+          <option value="default">По умолчанию</option>
+          <option value="asc">Сначала дешевле</option>
+          <option value="desc">Сначала дороже</option>
+          <option value="name">По названию</option>
+        </select>
+      </label>
+    </div>
+
+    <p id="count" class="mt-6 text-sm text-[#6b5f66]" aria-live="polite"></p>
+    <div id="grid" class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"></div>
+    <div id="empty" class="hidden text-center py-16">
+      <p class="font-serif text-2xl">Ничего не нашлось</p>
+      <p class="text-[#6b5f66] mt-2">Попробуйте другой запрос или категорию — или позвоните, мы подскажем.</p>
+    </div>
+
+    <div class="mt-12 text-center reveal">
+      <a id="allCatalog" href="#" target="_blank" rel="noopener" class="btn-ghost inline-flex items-center gap-2 rounded-full px-8 py-4 font-bold"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ПРЕИМУЩЕСТВА ═════════ -->
+<section id="why" class="py-16 lg:py-24 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-bold uppercase tracking-[.18em] accent-text">Почему Dance Mania</p>
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-2">Одежда, которая не мешает танцевать</h2>
+    </div>
+    <div id="adv" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+  </div>
+</section>
+
+<!-- ═════════ ОТЗЫВЫ ═════════ -->
+<section id="reviews" class="py-16 lg:py-24 text-white scroll-mt-20" style="background:var(--dark)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-bold uppercase tracking-[.18em]" style="color:#f5a3bb">Отзывы</p>
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-2">Нам доверяют танцоры</h2>
+    </div>
+    <div id="rev" class="mt-12 grid md:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ═════════ КОНТАКТЫ ═════════ -->
+<section id="contacts" class="py-16 lg:py-24 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-bold uppercase tracking-[.18em] accent-text">Контакты</p>
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-2">Приходите на примерку или напишите нам</h2>
+    </div>
+
+    <div class="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-8">
+      <!-- Форма -->
+      <form id="contactForm" class="card rounded-3xl p-6 sm:p-8 !transform-none hover:!shadow-none" novalidate>
+        <h3 class="font-serif text-2xl font-semibold">Оставьте заявку</h3>
+        <p class="text-[#6b5f66] mt-1">Перезвоним и подскажем по размерам и наличию.</p>
+        <div class="mt-6 space-y-4">
+          <div>
+            <label for="cName" class="text-sm font-semibold">Ваше имя</label>
+            <input id="cName" name="name" class="field mt-1.5" autocomplete="name" placeholder="Анна">
+            <p class="err" data-err="name"></p>
+          </div>
+          <div>
+            <label for="cPhone" class="text-sm font-semibold">Телефон</label>
+            <input id="cPhone" name="phone" type="tel" inputmode="tel" class="field mt-1.5" autocomplete="tel" placeholder="+7 900 000-00-00">
+            <p class="err" data-err="phone"></p>
+          </div>
+          <div>
+            <label for="cMsg" class="text-sm font-semibold">Что вас интересует <span class="font-normal text-[#9b8f96]">(необязательно)</span></label>
+            <textarea id="cMsg" name="message" rows="3" class="field mt-1.5" placeholder="Например: боди для соревнований, рост 160"></textarea>
+          </div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+          <label class="flex gap-3 items-start text-sm text-[#5b4f57] cursor-pointer">
+            <input type="checkbox" name="agree" class="mt-1 w-4 h-4 accent-[var(--accent)]">
+            <span>Согласен на обработку персональных данных (<a href="https://dancemania.store/privacy" target="_blank" rel="noopener" class="underline">политика конфиденциальности</a>)</span>
+          </label>
+          <p class="err" data-err="agree"></p>
+        </div>
+        <button type="submit" class="btn-primary mt-4 w-full rounded-full py-4 text-base font-bold">Отправить заявку</button>
+        <p class="status mt-4 text-sm font-semibold hidden" role="status"></p>
+      </form>
+
+      <!-- Инфо + карта -->
+      <div class="space-y-6">
+        <div class="card rounded-3xl p-6 sm:p-8 !transform-none hover:!shadow-none">
+          <dl id="contactList" class="space-y-5"></dl>
+          <div id="socials" class="mt-6 flex gap-3"></div>
+        </div>
+        <div class="rounded-3xl overflow-hidden border border-[var(--line)] bg-white h-72 lg:h-[19rem] relative">
+          <iframe id="map" title="Карта: магазин Dance Mania" class="w-full h-full" loading="lazy" referrerpolicy="no-referrer"></iframe>
+          <a id="mapLink" target="_blank" rel="noopener" class="absolute bottom-3 right-3 bg-white rounded-full px-4 py-2 text-sm font-bold shadow-lg hover:text-[var(--accent)]">Открыть в Яндекс.Картах</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═════════ ПОДВАЛ ═════════ -->
+<footer class="border-t border-[var(--line)] bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row gap-6 md:items-center md:justify-between text-sm text-[#6b5f66]">
+    <div class="flex items-center gap-4">
+      <img id="footLogo" alt="Dance Mania" class="h-8 w-auto" referrerpolicy="no-referrer">
+      <span id="footCopy"></span>
+    </div>
+    <p class="max-w-md">Информация на сайте не является публичной офертой. Актуальные цены и наличие уточняйте по телефону.</p>
+    <a href="https://dancemania.store/privacy" target="_blank" rel="noopener" class="underline hover:text-[var(--accent)]">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<!-- ═════════ МОДАЛКА «ЗАКАЗАТЬ» ═════════ -->
+<dialog id="orderDlg" aria-labelledby="orderTitle" class="w-full">
+  <div class="min-h-screen grid place-items-center p-4">
+    <form id="orderForm" class="bg-[var(--paper)] rounded-3xl w-full max-w-md p-6 sm:p-8 relative shadow-2xl" novalidate>
+      <button type="button" id="orderClose" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white border border-[var(--line)] grid place-items-center" aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <h3 id="orderTitle" class="font-serif text-2xl font-semibold pr-10">Заказать</h3>
+      <div class="mt-4 flex gap-4 items-center bg-white border border-[var(--line)] rounded-2xl p-3">
+        <img id="oImg" alt="" class="w-16 h-16 rounded-xl object-cover img-ph" referrerpolicy="no-referrer">
+        <div class="min-w-0"><p id="oName" class="font-bold leading-snug"></p><p id="oPrice" class="accent-text font-extrabold mt-0.5"></p></div>
+      </div>
+      <div class="mt-5 space-y-4">
+        <div>
+          <label for="oUser" class="text-sm font-semibold">Ваше имя</label>
+          <input id="oUser" name="name" class="field mt-1.5" autocomplete="name">
+          <p class="err" data-err="name"></p>
+        </div>
+        <div>
+          <label for="oPhone" class="text-sm font-semibold">Телефон</label>
+          <input id="oPhone" name="phone" type="tel" inputmode="tel" class="field mt-1.5" autocomplete="tel" placeholder="+7 900 000-00-00">
+          <p class="err" data-err="phone"></p>
+        </div>
+        <div>
+          <label for="oMsg" class="text-sm font-semibold">Размер, цвет, пожелания <span class="font-normal text-[#9b8f96]">(необязательно)</span></label>
+          <textarea id="oMsg" name="message" rows="2" class="field mt-1.5"></textarea>
+        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+        <label class="flex gap-3 items-start text-sm text-[#5b4f57] cursor-pointer">
+          <input type="checkbox" name="agree" class="mt-1 w-4 h-4 accent-[var(--accent)]">
+          <span>Согласен на обработку персональных данных</span>
+        </label>
+        <p class="err" data-err="agree"></p>
+      </div>
+      <button type="submit" class="btn-primary mt-3 w-full rounded-full py-4 font-bold">Отправить заказ</button>
+      <p class="status mt-4 text-sm font-semibold hidden" role="status"></p>
+    </form>
+  </div>
+</dialog>
+
+<!-- Подключаем файл с данными. ВАЖНО: data.js должен лежать рядом с index.html -->
+<script src="data.js"></script>
+
+<script>
+(function () {
+  'use strict';
+  const S = window.SITE;
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const rub = (n) => new Intl.NumberFormat('ru-RU').format(n) + '\u00A0₽';
+
+  /* ── тема ── */
+  document.documentElement.style.setProperty('--accent', S.theme.accent);
+  document.documentElement.style.setProperty('--dark', S.theme.dark);
+
+  /* ── шапка / hero ── */
+  const C = S.contacts, H = S.hero;
+  $('#logo').src = S.brand.logo;
+  $('#footLogo').src = S.brand.footerLogo || S.brand.logo;
+  const mainPhone = C.phones[0];
+  ['#headPhone', '#mobPhone'].forEach(id => { const a = $(id); a.href = 'tel:' + mainPhone.tel; a.textContent = mainPhone.text; });
+  $('#heroEyebrow').innerHTML = '<span class="w-8 h-px accent-bg inline-block"></span>' + esc(H.eyebrow);
+  $('#heroTitle').textContent = H.title;
+  $('#heroText').textContent = H.text;
+  $('#heroCta').textContent = H.ctaText;
+  $('#heroCta2').textContent = H.ctaSecondaryText;
+  $('#heroImg').src = H.image;
+  $('#heroAddr').textContent = C.address.replace('г. ', '');
+  $('#heroStats').innerHTML = (H.stats || []).map(s =>
+    `<div><dt class="font-serif text-2xl sm:text-3xl font-semibold">${esc(s.value)}</dt><dd class="text-xs sm:text-sm text-[#6b5f66] mt-1 leading-snug">${esc(s.label)}</dd></div>`).join('');
+  $('#footCopy').textContent = `© ${S.brand.year}–${new Date().getFullYear()} ${S.brand.name}`;
+
+  /* ── мобильное меню ── */
+  const burger = $('#burger'), mnav = $('#mobileNav');
+  burger.addEventListener('click', () => {
+    const open = mnav.classList.toggle('hidden') === false;
+    burger.setAttribute('aria-expanded', open);
+  });
+  mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mnav.classList.add('hidden'); burger.setAttribute('aria-expanded', false); }));
+
+  /* ── каталог ── */
+  const state = { cat: 'all', q: '', sort: 'default' };
+  const catName = Object.fromEntries(S.categories.map(c => [c.id, c.name]));
+
+  function renderChips() {
+    const all = [{ id: 'all', name: 'Все' }, ...S.categories];
+    $('#chips').innerHTML = all.map(c =>
+      `<button type="button" role="tab" aria-selected="${state.cat === c.id}" data-cat="${esc(c.id)}" class="chip shrink-0 rounded-full px-5 py-2.5 text-sm font-bold ${state.cat === c.id ? 'active' : ''}">${esc(c.name)}</button>`).join('');
+  }
+
+  function renderGrid() {
+    let list = S.products.map((p, i) => ({ ...p, _i: i }))
+      .filter(p => state.cat === 'all' || p.category === state.cat)
+      .filter(p => p.name.toLowerCase().includes(state.q.trim().toLowerCase()));
+    if (state.sort === 'asc') list.sort((a, b) => a.price - b.price);
+    if (state.sort === 'desc') list.sort((a, b) => b.price - a.price);
+    if (state.sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+
+    $('#count').textContent = list.length ? `Показано ${list.length} из ${S.products.length} в демо-подборке` : '';
+    $('#empty').classList.toggle('hidden', list.length > 0);
+    $('#grid').innerHTML = list.map(p => `
+      <article class="card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col">
+        <a href="${esc(p.url)}" target="_blank" rel="noopener" class="block relative aspect-square overflow-hidden img-ph" aria-label="Подробнее: ${esc(p.name)}">
+          <img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          ${p.badge ? `<span class="absolute top-3 left-3 accent-bg text-white text-xs font-extrabold rounded-full px-3 py-1">${esc(p.badge)}</span>` : ''}
+        </a>
+        <div class="p-3.5 sm:p-5 flex flex-col flex-1">
+          <p class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#9b8f96]">${esc(catName[p.category] || '')}</p>
+          <h3 class="mt-1 font-bold leading-snug text-[15px] sm:text-base line-clamp-2 min-h-[2.6em]">${esc(p.name)}</h3>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="text-lg sm:text-xl font-extrabold">${rub(p.price)}</span>
+            ${p.oldPrice ? `<span class="text-sm text-[#9b8f96] line-through">${rub(p.oldPrice)}</span>` : ''}
+          </div>
+          <div class="grid gap-2 sm:grid-cols-5 mt-auto pt-4">
+            <button type="button" data-order="${p._i}" class="btn-primary sm:col-span-3 rounded-full py-3 text-sm font-bold">Заказать</button>
+            <a href="${esc(p.url)}" target="_blank" rel="noopener" class="btn-ghost sm:col-span-2 rounded-full py-3 text-sm font-bold text-center">Подробнее</a>
+          </div>
+        </div>
+      </article>`).join('');
+  }
+
+  $('#chips').addEventListener('click', e => {
+    const b = e.target.closest('[data-cat]'); if (!b) return;
+    state.cat = b.dataset.cat; renderChips(); renderGrid();
+  });
+  $('#search').addEventListener('input', e => { state.q = e.target.value; renderGrid(); });
+  $('#sort').addEventListener('change', e => { state.sort = e.target.value; renderGrid(); });
+  const all = $('#allCatalog');
+  all.href = S.catalogUrl;
+  all.innerHTML = `Весь каталог — ${esc(S.catalogTotal)} товаров <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+
+  /* ── преимущества ── */
+  const ICONS = {
+    hanger: '<path d="M12 7a2 2 0 1 0-2-2"/><path d="M12 7v2l9 6a1.5 1.5 0 0 1-.8 2.7H3.8A1.5 1.5 0 0 1 3 15l9-6"/>',
+    tag: '<path d="M20 12 12 20a2 2 0 0 1-2.8 0L3 13.8V4h9.8L20 11.2a1.2 1.2 0 0 1 0 .8z"/><circle cx="8" cy="8.5" r="1.3"/>',
+    store: '<path d="M4 9l1.5-5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5 12v8h14v-8"/><path d="M10 20v-4h4v4"/>',
+    scissors: '<circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 7.5 20 18M8 16.5 20 6"/>',
+    truck: '<path d="M2 6h12v10H2zM14 10h4l3 3v3h-7z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
+    heart: '<path d="M12 20s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 9c0 5.8-8 11-8 11z"/>'
+  };
+  $('#adv').innerHTML = S.advantages.map(a => `
+    <div class="reveal card rounded-3xl p-6 !transform-none hover:!shadow-none">
+      <span class="w-12 h-12 rounded-2xl grid place-items-center" style="background:color-mix(in srgb, var(--accent) 12%, white); color:var(--accent)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[a.icon] || ICONS.heart}</svg>
+      </span>
+      <h3 class="font-serif text-xl font-semibold mt-5">${esc(a.title)}</h3>
+      <p class="text-[#5b4f57] mt-2 leading-relaxed text-[15px]">${esc(a.text)}</p>
+    </div>`).join('');
+
+  /* ── отзывы ── */
+  if (!S.reviews || !S.reviews.length) { $('#reviews').remove(); document.querySelectorAll('a[href="#reviews"]').forEach(a => a.remove()); }
+  else $('#rev').innerHTML = S.reviews.map(r => `
+    <figure class="reveal rounded-3xl p-6 sm:p-7 border border-white/10 bg-white/[.06] relative">
+      ${r.demo ? '<span class="absolute top-4 right-4 text-[11px] font-bold uppercase tracking-wider rounded-full px-3 py-1 bg-white/15">Макет</span>' : ''}
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="#f5a3bb"><path d="M7 7h4v4c0 3-1.5 5-4 6l-.8-1.4C7.6 14.9 8 13.700 8 12H5V9a2 2 0 0 1 2-2zm9 0h4v4c0 3-1.5 5-4 6l-.8-1.4C16.600 14.900 17 13.700 17 12h-3V9a2 2 0 0 1 2-2z"/></svg>
+      <blockquote class="mt-4 text-[17px] leading-relaxed text-white/90">${esc(r.text)}</blockquote>
+      <figcaption class="mt-6 flex items-center gap-3">
+        <span class="w-10 h-10 rounded-full accent-bg grid place-items-center font-extrabold">${esc((r.name || '?').charAt(0))}</span>
+        <span class="text-sm"><b class="block">${esc(r.name)}</b><span class="text-white/60">${esc(r.role)}</span></span>
+      </figcaption>
+    </figure>`).join('');
+
+  /* ── контакты ── */
+  const row = (title, body) => `<div><dt class="text-xs font-bold uppercase tracking-wider text-[#9b8f96]">${title}</dt><dd class="mt-1.5 text-[17px] font-semibold leading-snug">${body}</dd></div>`;
+  $('#contactList').innerHTML =
+    row('Адрес', `${esc(C.address)}<span class="block text-sm font-normal text-[#6b5f66] mt-1">${esc(C.addressNote)}</span>`) +
+    row('Режим работы', C.hours.map(h => `<span class="flex justify-between max-w-xs"><span>${esc(h.days)}</span><span>${esc(h.time)}</span></span>`).join('')) +
+    row('Телефоны', C.phones.map(p => `<a href="tel:${esc(p.tel)}" class="block hover:text-[var(--accent)]">${esc(p.text)} <span class="text-sm font-normal text-[#6b5f66]">· ${esc(p.label)}</span></a>`).join('')) +
+    row('E-mail', `<a href="mailto:${esc(C.email)}" class="hover:text-[var(--accent)] break-all">${esc(C.email)}</a>`);
+  const soc = (href, label, svg) => `<a href="${esc(href)}" target="_blank" rel="noopener" aria-label="${label}" class="w-12 h-12 rounded-full border border-[var(--line)] grid place-items-center hover:border-[var(--accent)] hover:text-[var(--accent)] transition">${svg}</a>`;
+  $('#socials').innerHTML =
+    (C.vk ? soc(C.vk, 'ВКонтакте', '<span class="font-extrabold text-sm">VK</span>') : '') +
+    (C.instagram ? soc(C.instagram, 'Instagram', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>') : '');
+  $('#map').src = C.mapEmbed;
+  $('#mapLink').href = C.mapLink;
+
+  /* ── анимация появления ── */
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+  /* ═════════ ФОРМЫ: валидация и отправка ═════════ */
+  function validate(form) {
+    const f = new FormData(form), errs = {};
+    const name = (f.get('name') || '').trim();
+    const digits = (f.get('phone') || '').replace(/\D/g, '');
+    if (name.length < 2) errs.name = 'Введите имя (минимум 2 буквы)';
+    if (!(digits.length === 11 && /^[78]/.test(digits)) && !(digits.length === 10 && digits[0] === '9')) errs.phone = 'Введите телефон полностью, например +7 900 000-00-00';
+    if (!f.get('agree')) errs.agree = 'Нужно согласие на обработку данных';
+    form.querySelectorAll('[data-err]').forEach(p => {
+      const k = p.dataset.err; p.textContent = errs[k] || '';
+      const inp = form.querySelector(`[name="${k}"]`); if (inp && inp.classList) inp.classList.toggle('invalid', !!errs[k]);
+    });
+    const first = Object.keys(errs)[0]; if (first) form.querySelector(`[name="${first}"]`)?.focus();
+    return !Object.keys(errs).length;
+  }
+
+  async function sendLead(lead) {
+    const F = S.form;
+    const lines = [
+      lead.product ? `🛍 Заказ: ${lead.product}` : '📩 Заявка с сайта',
+      `Имя: ${lead.name}`, `Телефон: ${lead.phone}`,
+      lead.message ? `Комментарий: ${lead.message}` : ''
+    ].filter(Boolean);
+
+    if (F.mode === 'telegram') {
+      if (!F.telegram.botToken || !F.telegram.chatId) throw new Error('В data.js не заполнены botToken и chatId');
+      const r = await fetch(`https://api.telegram.org/bot${F.telegram.botToken}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: F.telegram.chatId, text: lines.map(esc).join('\n'), parse_mode: 'HTML' })
+      });
+      if (!r.ok) throw new Error('Telegram вернул ошибку ' + r.status);
+    } else if (F.mode === 'email') {
+      const r = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(F.email.to)}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: lead.product ? 'Заказ: ' + lead.product : 'Заявка с сайта Dance Mania', name: lead.name, phone: lead.phone, message: lead.message || '—', product: lead.product || '—' })
+      });
+      if (!r.ok) throw new Error('Почтовый сервис вернул ошибку ' + r.status);
+    } else {
+      await new Promise(res => setTimeout(res, 700));   // демо-режим
+    }
+  }
+
+  function wireForm(form, getProduct, onDone) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = form.querySelector('.status'), btn = form.querySelector('button[type=submit]');
+      status.className = 'status mt-4 text-sm font-semibold hidden';
+      if (!validate(form)) return;
+      const f = new FormData(form);
+      if (f.get('website')) return;                       // защита от ботов
+      const label = btn.textContent; btn.disabled = true; btn.textContent = 'Отправляем…';
+      try {
+        await sendLead({ name: f.get('name').trim(), phone: f.get('phone').trim(), message: (f.get('message') || '').trim(), product: getProduct() });
+        status.textContent = S.form.successText + (S.form.mode === 'demo' ? ' (демо-режим: заявка никуда не уходит)' : '');
+        status.className = 'status mt-4 text-sm font-semibold text-green-700';
+        form.reset(); onDone && onDone();
+      } catch (err) {
+        status.textContent = 'Не удалось отправить: ' + err.message + '. Позвоните нам: ' + mainPhone.text;
+        status.className = 'status mt-4 text-sm font-semibold text-red-700';
+      } finally { btn.disabled = false; btn.textContent = label; }
+    });
+    form.querySelectorAll('.field').forEach(i => i.addEventListener('input', () => { i.classList.remove('invalid'); const p = form.querySelector(`[data-err="${i.name}"]`); if (p) p.textContent = ''; }));
+  }
+
+  /* модалка заказа */
+  const dlg = $('#orderDlg'); let current = null;
+  function openOrder(i) {
+    current = S.products[i];
+    $('#oImg').src = current.photo; $('#oName').textContent = current.name; $('#oPrice').textContent = rub(current.price);
+    $('#orderForm .status').className = 'status mt-4 text-sm font-semibold hidden';
+    dlg.showModal(); document.body.style.overflow = 'hidden';
+    setTimeout(() => $('#oUser').focus(), 50);
+  }
+  function closeOrder() { dlg.close(); }
+  dlg.addEventListener('close', () => { document.body.style.overflow = ''; });
+  dlg.addEventListener('click', e => { if (e.target === dlg || e.target.parentElement === dlg) closeOrder(); });
+  $('#orderClose').addEventListener('click', closeOrder);
+  $('#grid').addEventListener('click', e => { const b = e.target.closest('[data-order]'); if (b) openOrder(+b.dataset.order); });
+
+  wireForm($('#orderForm'), () => current ? `${current.name} — ${rub(current.price)}` : '', () => setTimeout(closeOrder, 2200));
+  wireForm($('#contactForm'), () => '');
+
+  /* маска телефона (мягкая: +7 900 000-00-00) */
+  document.querySelectorAll('input[type=tel]').forEach(inp => inp.addEventListener('input', () => {
+    let d = inp.value.replace(/\D/g, ''); if (!d) { inp.value = ''; return; }
+    if (d[0] === '8') d = '7' + d.slice(1); if (d[0] !== '7') d = '7' + d; d = d.slice(0, 11);
+    let o = '+7'; if (d.length > 1) o += ' ' + d.slice(1, 4); if (d.length > 4) o += ' ' + d.slice(4, 7); if (d.length > 7) o += '-' + d.slice(7, 9); if (d.length > 9) o += '-' + d.slice(9, 11);
+    inp.value = o;
+  }));
+
+  renderChips(); renderGrid();
+})();
+</script>
+</body>
+</html>
